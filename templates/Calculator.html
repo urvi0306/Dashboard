@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stylish Calculator</title>
+</head>
+<style>
+  body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('https://d3mvlb3hz2g78.cloudfront.net/wp-content/uploads/2011/03/thumb_720_450_black-and-white-numbers_shutterstock_25821664.jpg') no-repeat center center fixed;
+  background-size: cover;
+  animation: backgroundFade 15s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundFade {
+  0% { filter: brightness(1) saturate(1); }
+  50% { filter: brightness(1.2) saturate(1.5); }
+  100% { filter: brightness(1) saturate(1); }
+}
+
+.calculator-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+}
+
+.calculator-container:hover {
+  transform: scale(1.02);
+}
+
+h2 {
+  color: #34495e;
+  margin-bottom: 20px;
+}
+
+input[type="number"] {
+  padding: 12px;
+  margin: 10px;
+  width: 220px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="number"]:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.4);
+  outline: none;
+}
+
+button {
+  padding: 10px 24px;
+  margin: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+#result {
+  margin-top: 30px;
+  font-size: 20px;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+</style>
+<body>
+  <h2>Stylish Calculator</h2>
+  <input type="number" id="num1" placeholder="Enter first number">
+  <input type="number" id="num2" placeholder="Enter second number">
+  <br><br>
+  <button onclick="calculate('+')">Add</button>
+  <button onclick="calculate('-')">Subtract</button>
+  <button onclick="calculate('*')">Multiply</button>
+  <button onclick="calculate('/')">Divide</button>
+  <p id="result"></p>
+
+  <script>
+    function calculate(operator) {
+      const num1 = parseFloat(document.getElementById('num1').value);
+      const num2 = parseFloat(document.getElementById('num2').value);
+      let result;
+      switch (operator) {
+        case '+':
+          result = num1 + num2;
+          break;
+        case '-':
+          result = num1 - num2;
+          break;
+        case '*':
+          result = num1 * num2;
+          break;
+        case '/':
+          result = num2 !== 0 ? num1 / num2 : 'Cannot divide by zero';
+          break;
+      }
+      document.getElementById('result').textContent = 'Result: ' + result;
+    }
+  </script>
+</body>
+</html>

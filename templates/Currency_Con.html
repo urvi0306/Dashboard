@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Currency Converter</title>
+  <style>
+    /* Base setup */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #dbeafe, #fef3c7);
+  animation: gradientShift 15s ease infinite alternate;
+}
+
+@keyframes gradientShift {
+  0% { background: linear-gradient(135deg, #dbeafe, #fef3c7); }
+  50% { background: linear-gradient(135deg, #a7f3d0, #fcd34d); }
+  100% { background: linear-gradient(135deg, #fef3c7, #dbeafe); }
+}
+
+/* Calculator container */
+.calculator-container {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease;
+}
+
+.calculator-container:hover {
+  transform: scale(1.02);
+}
+
+/* Heading */
+h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Inputs */
+input[type="number"] {
+  padding: 12px;
+  margin: 10px;
+  width: 220px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="number"]:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+  outline: none;
+}
+
+/* Buttons */
+button {
+  padding: 10px 24px;
+  margin: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}
+
+/* Result text */
+#result {
+  margin-top: 30px;
+  font-size: 20px;
+  color: #1f2937;
+  font-weight: 600;
+  transition: opacity 0.5s ease;
+}
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .converter-container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h2 {
+      color: #34495e;
+      margin-bottom: 20px;
+    }
+
+    input, select, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+      width: 80%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+  <div class="converter-container">
+    <h2>Currency Converter</h2>
+    <input type="number" id="amount" placeholder="Enter amount">
+    <br>
+    <select id="fromCurrency">
+      <option value="USD">USD</option>
+      <option value="INR">INR</option>
+      <option value="EUR">EUR</option>
+      <option value="JPY">JPY</option>
+    </select>
+    <select id="toCurrency">
+      <option value="INR">INR</option>
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="JPY">JPY</option>
+    </select>
+    <br>
+    <button onclick="convertCurrency()">Convert</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    const rates = {
+      USD: { INR: 83, EUR: 0.92, JPY: 160 },
+      INR: { USD: 0.012, EUR: 0.011, JPY: 1.93 },
+      EUR: { USD: 1.09, INR: 90.5, JPY: 173.5 },
+      JPY: { USD: 0.0063, INR: 0.52, EUR: 0.0058 }
+    };
+
+    function convertCurrency() {
+      const amount = parseFloat(document.getElementById('amount').value);
+      const from = document.getElementById('fromCurrency').value;
+      const to = document.getElementById('toCurrency').value;
+
+      if (!amount || from === to) {
+        document.getElementById('result').textContent = "Please enter a valid amount and select different currencies.";
+        return;
+      }
+
+      const rate = rates[from][to];
+      const converted = (amount * rate).toFixed(2);
+      document.getElementById('result').textContent = `${amount} ${from} = ${converted} ${to}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Dashboard</title>
+  <style>
+    /* Bounce-in effect when page loads */
+@keyframes bounceIn {
+  0% { opacity: 0; transform: scale(0.5); }
+  60% { transform: scale(1.2); }
+  80% { transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.dashboard {
+  animation: bounceIn 0.8s ease-out both;
+}
+
+/* Rotate emoji gently */
+.emoji {
+  animation: spinEmoji 4s infinite linear;
+}
+
+@keyframes spinEmoji {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Pulse effect when hovering over cards */
+.card:hover {
+  animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Floating header title */
+h1 {
+  animation: floatTitle 2s ease-in-out infinite;
+}
+
+@keyframes floatTitle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+    body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #dbeafe, #fef3c7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: backgroundPulse 12s ease infinite alternate;
+}
+
+@keyframes backgroundPulse {
+  0% { background: linear-gradient(135deg, #dbeafe, #fef3c7); }
+  50% { background: linear-gradient(135deg, #a7f3d0, #fcd34d); }
+  100% { background: linear-gradient(135deg, #fef3c7, #dbeafe); }
+}
+
+.dashboard {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+  transition: transform 0.3s ease;
+}
+
+.dashboard:hover {
+  transform: scale(1.01);
+}
+
+h1 {
+  margin-bottom: 30px;
+  font-size: 32px;
+  color: #2c3e50;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.card {
+  background: linear-gradient(135deg, #3498db, #5dade2);
+  color: white;
+  padding: 16px;
+  margin: 15px 0;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.03);
+  background: linear-gradient(135deg, #2980b9, #3498db);
+  box-shadow: 0 10px 20px rgba(41, 128, 185, 0.3);
+}
+
+.emoji {
+  font-size: 24px;
+}
+/* Subtle fade-in animation for dashboard on load */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.dashboard {
+  animation: fadeInUp 1s ease forwards;
+}
+
+/* Add floating animation to cards */
+@keyframes floatCard {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+.card {
+  animation: floatCard 3s ease-in-out infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .dashboard {
+    padding: 30px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .card {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+
+/* Add a glowing effect on focus */
+.card:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.6);
+}
+
+/* Footer or decorative caption */
+.footer {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+  opacity: 0.7;
+  text-align: center;
+}
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #dbeafe, #fef3c7);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .dashboard {
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #2c3e50;
+      font-size: 28px;
+      text-transform: uppercase;
+    }
+
+    .card {
+      background-color: #3498db;
+      color: white;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      display: block;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .card:hover {
+      background-color: #2980b9;
+      transform: scale(1.03);
+    }
+
+    .emoji {
+      font-size: 24px;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <h1>Welcome to Your Dashboard</h1>
+    <a href="Calculator.html" class="card"><span class="emoji">🧮</span> Calculator</a>
+    <a href="Currency_Con.html" class="card"><span class="emoji">💱</span> Currency Converter</a>
+    <a href="rps.html" class="card"><span class="emoji">✂️</span> Rock-Paper-Scissors</a>
+    <a href="Registration.html" class="card"><span class="emoji">📝</span> Registration Form</a>
+  </div>
+</body>
+</html>
+
